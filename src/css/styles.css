@@ -17,7 +17,7 @@ body {
 img {
   display: block;
   max-width: 100%;
-  height: auto;
+  height: 80%;
 }
 
 h1,
@@ -48,7 +48,7 @@ ol {
 
 /* Container */
 .container {
-  width: 1200px;
+  width: 1600px;
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
@@ -100,15 +100,24 @@ ol {
 }
 
 .gallery {
-  display: flex;
+ display: flex;
   flex-wrap: wrap;
-  gap:30px;
+  gap: 20px;
+  max-width: 1600px;
+  padding: 0 5px;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
-.gallery a {
-  flex-basis: calc((100% - 120px) / 4);
-  flex-grow: 1;
+
+.photo-card {
+  width: calc((100% - 70px) / 4);
+  overflow: hidden;
+  border: 1px solid #a3a196;
+  border-radius: 5px;
+  min-width: 300px;
 }
-.gallery-img {
+
+.gallery img {
   object-fit: cover;
   object-position: center;
 }
@@ -117,13 +126,14 @@ ol {
   flex-grow: 1;
   justify-content: center;
   align-items: center;
-  gap: 7px;
+  gap: 10px;
   padding: 10px 20px;
 }
 
 .info-item {
-  text-align: center;
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  text-align: center;
 }
