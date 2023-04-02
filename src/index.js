@@ -7,58 +7,66 @@ import { PixabayAPI } from './pixabay-api';
 import { createGalleryCards } from './createGalleryCards';
 
 const searchFormEl = document.querySelector('#search-form');
-const photosListEl = document.querySelector('.gallery-item');
+const photosListEl = document.querySelector('.gallery');
 const loadMoreBtnEl = document.querySelector('.load-more');
 
 const DEBOUNCE_DELAY = 300;
 
 const newPixabayAPI = new PixabayAPI;
-const lightbox = new SimpleLightbox('.gallery a');
+
 
 const handleSearchPhoto = async event => {
   event.preventDefault();
+  cleanRenderGalleryCards();
+  newPixabayAPI.resetPage();
 
   const searchQuery = event.currentTarget.elements.searchQuery.value.trim().toLowerCase();
   newPixabayAPI.query = searchQuery;
 
   if (!searchQuery) {
-    newPixabayAPI.resetPage();
-    cleanRenderGalleryCards;
+    searchFormEl.reset();
      Notiflix.Notify.failure('Enter a search query!');
     return
   }
 
   try {
-    const data = await fetchPhotos(searchQuery);
-    const { hits, totalHits } = data;
+    const { data } = await fetchPhotos();
+    
 
-    if (hits.length === 0) {
+    if (data.length === 0) {
       Notiflix.Notify.info("Sorry, there are no images matching your search query. Please try again.");
       return
     }
 
-    Notiflix.Notify.success(`Hooray! We found ${totalHits} images!`);
+    Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images!`);
     
-    renderGalleryCards(hits);
+    renderGalleryCards(data.hits);
 
-    if (totalHits > 40) {
+    
+
+    if (data.totalHits > newPixabayAPI.page * newPixabayAPI.perPage) {
       loadMoreBtnEl.classList.remove('is-hidden');
-      newPixabayAPI.incrementPage();
+      
     }
-    lightbox.refresh();
+    
   } catch (error) {
     Notiflix.Notify.failure('Something went wrong! Please retry');
     console.log(error);
   }
 };
 
+const lightbox = new SimpleLightbox('.gallery a');
+
 const handleLoadMoreBtnClick = async () => {
   newPixabayAPI.incrementPage();
 
   try {
     const data = await newPixabayAPI.fetchPhotos();
-    const { hits, totalHits } = data;
-    renderGalleryCards(hits);
+    
+    renderGalleryCards(data.hits);
+
+    autoScrollPage();
+
     lightbox.refresh();
     
 
@@ -81,6 +89,16 @@ function renderGalleryCards(data) {
 
 function cleanRenderGalleryCards() {
   photosListEl.innerHTML = '';
+}
+
+function autoScrollPage() {
+  const { height: cardHeight } =
+    galleryListEl.firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
 }
 
 

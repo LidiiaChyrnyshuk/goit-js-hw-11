@@ -6,26 +6,30 @@ export function createGalleryCards({
   views,
   comments,
   downloads }) {
-  return  `<div class="photo-card">
+  return `<div class="photo-card">
                 <a href="${largeImageURL}">
                   <img src="${webformatURL}" alt="${tags}" loading="lazy" class="gallery-img img" />
                 </a>
                 
                 <div class="info">
                   <p class="info-item">
-                    <b>Likes<span class="description_info">${likes}</span></b>
+                    <b>Likes</b>
+                    ${likes}
                   </p>
                   <p class="info-item">
-                    <b>Views<span class="description_info">${views}</span></b>
+                    <b>Views</b>
+                    ${views}
                   </p>
                   <p class="info-item">
-                    <b>Comments<span class="description_info">${comments}</span></b>
+                    <b>Comments</b>
+                    ${comments}
                   </p>
                   <p class="info-item">
-                    <b>Downloads<span class="description_info">${downloads}</span></b>
+                    <b>Downloads</b>
+                    ${downloads}
                   </p>
                 </div>
-              </div>`
+              </div>`;
   }
 
 
