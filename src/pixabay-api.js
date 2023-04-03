@@ -13,7 +13,7 @@ export class PixabayAPI {
  async fetchPhotos() {
    const searchParams = new URLSearchParams({
      key: this.#API_KEY,
-     q: this.searchQuery,
+     q: this.query,
      image_type: 'photo',
      orientation: 'horizontal',
      safesearch: true,
@@ -22,7 +22,7 @@ export class PixabayAPI {
    });
 
    const response = await axios.get(`${this.#BASE_URL}?${searchParams}`);
-   console.log(response.data);
+  
    return response.data;
     
   }

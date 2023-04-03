@@ -115,12 +115,22 @@ ol {
   border: 1px solid #a3a196;
   border-radius: 5px;
   min-width: 300px;
+  transition: transform 300ms;
 }
+.photo-card:hover,
+.photo-card:focus {
+  transform: scale(1.05);
+}
+/* .gallery-img {
+  transition: transform 300ms;
+} */
 
 .gallery img {
   object-fit: cover;
   object-position: center;
 }
+
+
 .info {
   display: flex;
   flex-grow: 1;
