@@ -6,7 +6,7 @@ export function createGalleryCards({
   views,
   comments,
   downloads }) {
-  return `<a class="gallery-link" href="${largeImageURL}">
+  return `<a class="gallery-link link" href="${largeImageURL}">
             <div class="photo-card">
               <img
                 src="${webformatURL}"
