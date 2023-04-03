@@ -119,7 +119,7 @@ ol {
 }
 .photo-card:hover,
 .photo-card:focus {
-  transform: scale(1.05);
+  transform: scale(1.07);
 }
 /* .gallery-img {
   transition: transform 300ms;

@@ -9,23 +9,53 @@
   <body>
     <header>
       <section class="search-section">
-      <div class="container">
-        <form class="search-form" id="search-form">
-          <input
-            class="search-input"
-            type="text"
-            name="searchQuery"
-            autocomplete="off"
-            placeholder="Search images..."
-          />
-          <button class="search-btn btn" type="submit">Search</button>
-        </form>
-      </div>
-    </section>
+        <div class="container">
+          <form class="search-form" id="search-form">
+            <input
+              class="search-input"
+              type="text"
+              name="searchQuery"
+              autocomplete="off"
+              placeholder="Search images..."
+            />
+            <button class="search-btn btn" type="submit">Search</button>
+          </form>
+        </div>
+      </section>
     </header>
     <section class="gallery-section">
       <div class="container">
         <div class="gallery">
+          <a class="gallery-link" href="${largeImageURL}">
+            <div class="photo-card">
+              <img
+                src="${webformatURL}"
+                alt="${tags}"
+                loading="lazy"
+                class="gallery-img img"
+              />
+
+              <div class="info">
+                <p class="info-item">
+                  <b>Likes</b>
+                  ${likes}
+                </p>
+                <p class="info-item">
+                  <b>Views</b>
+                  ${views}
+                </p>
+                <p class="info-item">
+                  <b>Comments</b>
+                  ${comments}
+                </p>
+                <p class="info-item">
+                  <b>Downloads</b>
+                  ${downloads}
+                </p>
+              </div>
+            </div>
+          </a>
+
           <!-- Картки зображень -->
         </div>
         <div class="load-more-btn">
