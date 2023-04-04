@@ -11,7 +11,7 @@ const photosListEl = document.querySelector('.gallery');
 const loadMoreBtnEl = document.querySelector('.load-more');
 
 const newPixabayAPI = new PixabayAPI();
-const lightbox = new SimpleLightbox('.gallery a');
+let lightbox = new SimpleLightbox('.gallery a');
 
 const handleSearchPhoto = async event => {
   event.preventDefault();

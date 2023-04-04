@@ -115,8 +115,8 @@ ol {
 .gallery a {
   flex-basis: calc((100% - 120px) / 4);
   min-width: 300px;
-  flex-grow: 1 auto;
-  margin: 0;
+  /* flex-grow: 1 auto; */
+ 
 }
 
 .photo-card {
